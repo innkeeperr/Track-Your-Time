@@ -31,6 +31,7 @@ export const AddActivity = ({ defaultValue, id }: AddActivityFormProps) => {
   });
 
   const onSubmit: SubmitHandler<ActivityFormTypes> = (data) => {
+    // TODO Here pass data to context
     console.log(data);
   };
 
@@ -50,11 +51,17 @@ export const AddActivity = ({ defaultValue, id }: AddActivityFormProps) => {
               size="lg"
               {...register("activityName", {
                 required: "Activity name is required",
+                maxLength: {
+                  value: 30,
+                  message: "Max value length is 30 characters",
+                },
               })}
             />
-            {errors.activityName?.type === "required" && (
-              <FormErrorMessage>Activity name is required</FormErrorMessage>
-            )}
+            {errors ? (
+              <FormErrorMessage>
+                {errors.activityName?.message}
+              </FormErrorMessage>
+            ) : null}
           </FormControl>
           <Button
             variant="solid"

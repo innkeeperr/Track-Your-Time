@@ -15,9 +15,9 @@ export default {
   ],
 } as ComponentMeta<typeof AddActivity>;
 
-export const InitialInputState = () => <AddActivity id="initialInput" />;
+export const InitialInput = () => <AddActivity id="initialInput" />;
 
-InitialInputState.parameters = {
+InitialInput.parameters = {
   pseudo: {
     focus: false,
   },
